@@ -212,8 +212,8 @@ void *malloc(
 
     the_size = ((size + sbrk_amount) / sbrk_amount * sbrk_amount);
 
-    if (((rtems_unsigned32)starting_address = (void *)sbrk(the_size)) 
-            == (rtems_unsigned32) -1)
+    if ((starting_address = (void *)sbrk(the_size))
+            == (void*) -1)
       return (void *) 0;
 
     status = rtems_region_extend(
