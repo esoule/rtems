@@ -150,8 +150,6 @@ struct radix_node_head {
 #define Free(p) free((caddr_t)p, M_RTABLE);
 #endif /*KERNEL*/
 
-extern struct radix_node_head *mask_rnhead;
-
 void	 rn_init __P((void));
 int	 rn_inithead __P((void **, int));
 int	 rn_refines __P((void *, void *));
