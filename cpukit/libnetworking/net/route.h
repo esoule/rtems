@@ -261,7 +261,6 @@ struct route_cb {
 	} while (0)
 
 extern struct route_cb route_cb;
-extern struct rtstat rtstat;
 extern struct radix_node_head *rt_tables[AF_MAX+1];
 
 void	 route_init __P((void));
