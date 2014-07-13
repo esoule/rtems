@@ -74,6 +74,7 @@ void	microtime (struct timeval *tv);
  * and copy the contents of the BSD sys/types.h to here....
  */
 #include <sys/cdefs.h>
+#include <netinet/in.h>
 
 typedef	u_int64_t	u_quad_t;	/* quads */
 typedef	int64_t		quad_t;
