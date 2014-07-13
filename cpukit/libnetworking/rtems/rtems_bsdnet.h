@@ -6,6 +6,8 @@
 #define _RTEMS_BSDNET_
 
 #include <rtems.h>
+#include <sys/cdefs.h>
+#include <netinet/in.h>
 
 /*
  *  If this file is included from inside the Network Stack proper or
