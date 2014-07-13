@@ -36,7 +36,7 @@ dnl check if the compiler supports --specs
 RTEMS_GCC_SPECS
 
 if test "$GCC" = yes; then
-RTEMS_CFLAGS="$RTEMS_CFLAGS -Wall"
+RTEMS_CFLAGS="-Wall $RTEMS_CFLAGS"
 m4_if([$1],,[],[RTEMS_CFLAGS="$RTEMS_CFLAGS $1"])
 fi
 

@@ -33,7 +33,7 @@ RTEMS_GCC_PIPE
 test "$rtems_cv_gcc_pipe" = "yes" && CC="$CC --pipe"
 
 if test "$GCC" = yes; then
-RTEMS_CFLAGS="$RTEMS_CFLAGS -Wall"
+RTEMS_CFLAGS="-Wall $RTEMS_CFLAGS"
 m4_if([$1],,[],[RTEMS_CFLAGS="$RTEMS_CFLAGS $1"])
 fi
 
