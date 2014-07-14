@@ -111,7 +111,7 @@ SECTIONS
   PROVIDE (__EXCEPT_START__ = .);
   .gcc_except_table   :   AT (copy.tmptop.dat - copy.dest + copy.src)
   { 
-    *(.gcc_except_table) 
+    *(.gcc_except_table*) 
     . = ALIGN(0x10);
     copy.tmptop.exc = .;
   } >RAM
