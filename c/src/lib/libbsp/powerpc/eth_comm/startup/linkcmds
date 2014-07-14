@@ -37,7 +37,7 @@ SECTIONS
 	     text.start = .;
 	     *(.entry)
 	     *(.entry2)
-	     *(.text)
+	     *(.text*)
 	     *(.rodata*)
 
              /*
@@ -88,7 +88,7 @@ SECTIONS
 	  *(.data1)
           *(.gnu.linkonce.d.*)
 	  PROVIDE (__SDATA_START__ = .);
-	  *(.sdata)
+	  *(.sdata*)
 	  *(.gnu.linkonce.s.*)
 	} > ram
 	
@@ -128,7 +128,8 @@ SECTIONS
 	.bss :
 	{
 	  bss.start = .;
-	  *(.bss) *(.sbss) *(COMMON)
+	  *(.bss .bss* .gnu.linkonce.b*)
+	  *(.sbss*) *(COMMON)
 	  . = ALIGN(4);
 	  bss.end = .;
 	} > ram
