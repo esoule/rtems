@@ -40,6 +40,7 @@
 #ifndef _RPC_XDR_H
 #define _RPC_XDR_H
 #include <sys/cdefs.h>
+#include <stdint.h>
 
 /*
  * XDR provides a conventional way for converting between C data

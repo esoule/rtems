@@ -63,6 +63,7 @@
 #include <stdio.h>                                /* for snprintf() */
 size_t   strlcpy(char *, const char *, size_t);
 #endif
+#include <stdint.h>
 #include <vm/vm.h>
 #include <vm/vm_extern.h>
 
@@ -77,8 +78,6 @@ static MALLOC_DEFINE(M_SYSCTLTMP, "sysctltmp", "sysctl temp output buffer");
 #define M_SYSCTLOID 1
 #define M_SYSCTLTMP 2
 #define M_ZERO      0
-
-typedef unsigned long *uintptr_t;
 
 #define mtx_lock(l)
 #define mtx_unlock(l)
