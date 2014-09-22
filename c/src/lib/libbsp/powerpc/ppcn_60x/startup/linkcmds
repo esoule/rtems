@@ -43,7 +43,7 @@ SECTIONS
   .plt   : { *(.plt) }
   .text      :
   {
-    *(.text)
+    *(.text*)
 
     /*
      * Special FreeBSD sysctl sections.
@@ -96,7 +96,7 @@ SECTIONS
     CONSTRUCTORS
   }
   PROVIDE (__EXCEPT_START__ = .);
-  .gcc_except_table   : { *(.gcc_except_table) }
+  .gcc_except_table   : { *(.gcc_except_table*) }
   PROVIDE (__EXCEPT_END__ = .);
 
   .data1   : { *(.data1) }
@@ -129,7 +129,7 @@ SECTIONS
      can access them all, and initialized data all before uninitialized, so
      we can shorten the on-disk segment size.  */
   PROVIDE (__SDATA_START__ = .);
-  .sdata     : { *(.sdata) *(.gnu.linkonce.s.*)	}
+  .sdata     : { *(.sdata*) *(.gnu.linkonce.s.*)	}
   _edata  =  .;
   PROVIDE (edata = .);
   . =  ALIGN(8) + 0x1000;
@@ -137,7 +137,7 @@ SECTIONS
   .sbss      :
   {
     PROVIDE (__sbss_start = .);
-    *(.sbss)
+    *(.sbss*)
     *(.scommon)
     PROVIDE (__sbss_end = .);
   }
@@ -146,7 +146,7 @@ SECTIONS
   {
    PROVIDE (__bss_start = .);
    *(.dynbss)
-   *(.bss)
+   *(.bss .bss* .gnu.linkonce.b*)
    *(COMMON)
    PROVIDE (__bss_end = .);
   }

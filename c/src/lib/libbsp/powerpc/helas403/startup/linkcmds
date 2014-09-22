@@ -32,7 +32,7 @@ SECTIONS
   {
      text.start = . ;
      *(.entry2)
-     *(.text)
+     *(.text*)
      *(.gnu.linkonce.t.*)
      *(.rodata*)
      *(.gnu.linkonce.r.*)
@@ -102,7 +102,7 @@ SECTIONS
     *(.data1)
     *(.data.* .gnu.linkonce.d*)
     PROVIDE (__SDATA_START__ = .);
-    *(.sdata)
+    *(.sdata*)
     *(.gnu.linkonce.s.*)
     . = ALIGN(0x10);
     copy.tmptop.dat = .;
@@ -111,7 +111,7 @@ SECTIONS
   PROVIDE (__EXCEPT_START__ = .);
   .gcc_except_table   :   AT (copy.tmptop.dat - copy.dest + copy.src)
   { 
-    *(.gcc_except_table) 
+    *(.gcc_except_table*)
     . = ALIGN(0x10);
     copy.tmptop.exc = .;
   } >RAM
@@ -176,7 +176,8 @@ SECTIONS
   .bss :
   {
     bss.start = .;
-    *(.bss) *(.sbss) *(COMMON)
+    *(.bss .bss* .gnu.linkonce.b*)
+    *(.sbss*) *(COMMON)
     bss.end = ALIGN(4);
   } > RAM
   __SBSS_END__ = .;

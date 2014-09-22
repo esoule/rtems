@@ -57,7 +57,7 @@ SECTIONS
   .plt   	  : { *(.plt) 		}
   .text      :
   {
-    *(.text)
+    *(.text*)
     *(.gnu.linkonce.t.*)
     *(.descriptors)
 
@@ -106,7 +106,7 @@ SECTIONS
     SORT(CONSTRUCTORS)
   } >RAM
   PROVIDE (__EXCEPT_START__ = .);
-  .gcc_except_table   : { *(.gcc_except_table) } >RAM
+  .gcc_except_table   : { *(.gcc_except_table*) } >RAM
   PROVIDE (__EXCEPT_END__ = .);
 
   .data1   	  : { *(.data1) 	} >RAM
@@ -147,7 +147,7 @@ SECTIONS
      can access them all, and initialized data all before uninitialized, so
      we can shorten the on-disk segment size.  */
   PROVIDE (__SDATA_START__ = .);
-  .sdata	  : { *(.sdata) *(.gnu.linkonce.s.*)	} >RAM
+  .sdata	  : { *(.sdata*) *(.gnu.linkonce.s.*)	} >RAM
   _edata  =  .;
   PROVIDE (edata = .);
 
@@ -155,7 +155,7 @@ SECTIONS
   .sbss      :
   {
     PROVIDE (__sbss_start = .);
-    *(.sbss)
+    *(.sbss*)
     *(.scommon)
     *(.gnu.linkonce.sb.*)
     PROVIDE (__sbss_end = .);
@@ -166,7 +166,7 @@ SECTIONS
   {
    PROVIDE (__bss_start = .);
    *(.dynbss)
-   *(.bss)
+   *(.bss .bss* .gnu.linkonce.b*)
    *(COMMON)
   } >RAM
   . =  ALIGN(8) + 0x8000;
